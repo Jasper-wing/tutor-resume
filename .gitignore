@@ -1,0 +1,9 @@
+# Build scripts
+build_docx.py
+generate_docx.py
+test.docx
+
+# System files
+.vscode/
+.DS_Store
+Thumbs.db
