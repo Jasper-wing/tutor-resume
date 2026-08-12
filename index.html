@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金彭羽 - 家教简历</title>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --primary-light: #2980b9;
+            --accent: #e67e22;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2c3e50;
+            --text-light: #5d6d7e;
+            --border: #e0e4e8;
+            --tag-bg: #eaf2f8;
+            --tag-text: #1a5276;
+            --gold: #f39c12;
+            --silver: #95a5a6;
+            --bronze: #cd7f32;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+            background: #e8ecf1;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        .resume {
+            max-width: 750px;
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            overflow: hidden;
+        }
+
+        /* ===== Header ===== */
+        .header {
+            background: linear-gradient(135deg, #1a5276 0%, #1f6f9f 50%, #2980b9 100%);
+            color: #fff;
+            padding: 28px 36px 24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .header .header-left {
+            flex: 1;
+            text-align: left;
+        }
+
+        .header .name {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .header .badges {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .header .badge {
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .header .badge.highlight {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .header .photo {
+            width: 90px;
+            height: 120px;
+            flex-shrink: 0;
+            border-radius: 6px;
+            border: 2px solid rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.15);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+        }
+
+        .header .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 500px) {
+            .header {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .header .header-left {
+                text-align: center;
+            }
+            .header .badges {
+                justify-content: center;
+            }
+        }
+
+        /* ===== Body ===== */
+        .body {
+            padding: 28px 36px 32px;
+        }
+
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .section-title .icon {
+            font-size: 20px;
+        }
+
+        /* ===== Contact grid ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 24px;
+            font-size: 14px;
+        }
+
+        .contact-grid .item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-grid .label {
+            color: var(--text-light);
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .contact-grid .value {
+            font-weight: 600;
+        }
+
+        .contact-grid .value.highlight {
+            color: var(--primary-light);
+        }
+
+        /* ===== Score cards ===== */
+        .score-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .score-card {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 14px 16px;
+            text-align: center;
+            border-left: 3px solid var(--primary-light);
+        }
+
+        .score-card .num {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .score-card .desc {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        /* ===== Tag list ===== */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .tag.gold {
+            background: #fef9e7;
+            color: #7d6608;
+        }
+
+        .tag.silver {
+            background: #f4f6f7;
+            color: #5d6d7e;
+        }
+
+        /* ===== Experience ===== */
+        .exp-item {
+            margin-bottom: 16px;
+            padding-left: 16px;
+            border-left: 3px solid var(--border);
+            transition: border-color 0.2s;
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-item .exp-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .exp-item .exp-period {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 6px;
+        }
+
+        .exp-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .exp-item ul li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .exp-item ul li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 12px;
+        }
+
+        /* ===== Style tags ===== */
+        .style-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .style-card {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+
+        .style-card .style-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .style-card .style-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .style-card .style-desc {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* ===== Photo Gallery ===== */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+
+        .gallery .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 3 / 4;
+            background: var(--bg);
+            border: 1px solid var(--border);
+        }
+
+        .gallery .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--bg);
+            text-align: center;
+            padding: 16px 36px;
+            font-size: 14px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer .phone {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* ===== Print ===== */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .resume {
+                max-width: 100%;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .score-card, .style-card, .tag {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            @page {
+                margin: 12mm;
+                size: A4;
+            }
+        }
+
+        /* ===== Mobile ===== */
+        @media (max-width: 600px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .style-cards {
+                grid-template-columns: 1fr;
+            }
+            .score-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+            .body {
+                padding: 20px;
+            }
+            .header {
+                padding: 24px 20px 20px;
+            }
+            .header .name {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+
+        <!-- ===== Header ===== -->
+        <div class="header">
+            <div class="header-left">
+                <div class="name">金彭羽</div>
+                <div class="subtitle">大学生家教 · 数学辅导</div>
+                <div class="badges">
+                    <span class="badge highlight">初中教学</span>
+                    <span class="badge">小学教学</span>
+                    <span class="badge">高中教学</span>
+                    <span class="badge">中国民航大学</span>
+                    <span class="badge">4年教辅经验</span>
+                </div>
+            </div>
+            <div class="photo">
+                <img src="校服证件照（蓝）.png" alt="证件照">
+            </div>
+        </div>
+
+        <!-- ===== Body ===== -->
+        <div class="body">
+
+            <!-- 基本信息 -->
+            <div class="section">
+                <div class="section-title"><span class="icon">📋</span> 基本信息</div>
+                <div class="contact-grid">
+                    <div class="item"><span class="label">学校：</span><span class="value highlight">中国民航大学</span></div>
+                    <div class="item"><span class="label">专业/年级：</span><span class="value">交通运输（王牌专业·特色专业） · 大三</span></div>
+                    <div class="item"><span class="label">性别/年龄：</span><span class="value">男 · 20 岁</span></div>
+                    <div class="item"><span class="label">籍贯：</span><span class="value">云南昆明</span></div>
+                    <div class="item"><span class="label">📞 电话（微信同号）：</span><span class="value highlight">13759525063</span></div>
+                    <div class="item"><span class="label">🕐 可教时间：</span><span class="value">与家长协商</span></div>
+                    <div class="item"><span class="label">📍 授课地点：</span><span class="value">天津</span></div>
+                    <div class="item"><span class="label">🏷️ 政治面貌：</span><span class="value">共青团员</span></div>
+                </div>
+            </div>
+
+            <!-- 自我介绍 -->
+            <div class="section">
+                <div class="section-title"><span class="icon">💬</span> 自我介绍</div>
+                <p style="font-size:14px;line-height:1.8;color:var(--text);text-indent:2em;">
+                    我就读于<strong>中国民航大学交通运输专业（王牌专业）</strong>，高考数学<strong>全省前3%</strong>，大学期间5门数学核心课程均在90分以上，GPA位列<strong>专业前4%</strong>。我拥有<strong>4年教辅经验</strong>，累计辅导学生超百人，其中青竹课堂教学帮助<strong>83人取得满绩</strong>，中考数学辅导<strong>20余人中13人达95分以上</strong>。我擅长将复杂的数学知识拆解为易懂的模块，针对不同学生<strong>因材施教</strong>，注重培养解题思维而非机械刷题。性格耐心稳重，对待教学认真负责，致力于让每一位学生都能在数学学习中找到自信与乐趣。
+                </p>
+            </div>
+
+            <!-- 学业成绩 -->
+            <div class="section">
+                <div class="section-title"><span class="icon">🎓</span> 学业成绩</div>
+                <div class="score-cards">
+                    <div class="score-card">
+                        <div class="num">123<span style="font-size:14px;font-weight:500;">/150</span></div>
+                        <div class="desc">高考数学 · 全省前 3%</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="num">3.86<span style="font-size:14px;font-weight:500;">/4.0</span></div>
+                        <div class="desc">大学 GPA · 专业前 4%</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="num">97<span style="font-size:14px;font-weight:500;">分</span></div>
+                        <div class="desc">高等数学 · 两学期均 97</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="num">CET-4</div>
+                        <div class="desc">大学英语四级</div>
+                    </div>
+                </div>
+                <p style="text-align:center;margin-top:8px;font-size:13px;color:var(--text-light);">
+                    线性代数 <strong>95分</strong> ｜ 概率论与数理统计 <strong>92分</strong> ｜ 运筹学 <strong>97分</strong>
+                </p>
+            </div>
+
+            <!-- 教学成果 -->
+            <div class="section">
+                <div class="section-title"><span class="icon">📊</span> 教学成果</div>
+                <div class="score-cards">
+                    <div class="score-card">
+                        <div class="num">83<span style="font-size:14px;font-weight:500;">人</span></div>
+                        <div class="desc">青竹课堂数学课程\n取得满绩</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="num">20+<span style="font-size:14px;font-weight:500;">人</span></div>
+                        <div class="desc">中考数学\n95分以上13人</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="num">6<span style="font-size:14px;font-weight:500;">人</span></div>
+                        <div class="desc">辅导初中化学\n90分以上高分</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="num">线上+线下</div>
+                        <div class="desc">授课方式灵活\n支持远程教学</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 教学经验 -->
+            <div class="section">
+                <div class="section-title"><span class="icon">👨‍🏫</span> 教学经验</div>
+
+                <div class="exp-item">
+                    <div class="exp-title">小初高数学一对一辅导</div>
+                    <ul>
+                        <li>辅导过多名<strong>小学、初中、高中</strong>学生，覆盖基础巩固、能力提升、考前冲刺等不同需求</li>
+                        <li>针对每位学生定制个性化学习方案，从薄弱环节入手，<strong>逐个击破知识盲区</strong></li>
+                        <li>擅长将复杂题型归纳为清晰的解题模板，帮助学生建立系统思维，<strong>举一反三</strong></li>
+                        <li>所带学生成绩均有显著提升，获得<strong>家长与老师的一致好评</strong></li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-title">培训机构助教</div>
+                    <ul>
+                        <li>协助主讲老师完成课堂教学、作业批改与课后答疑，积累了丰富的面对面辅导经验</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-title">中国民航大学空管学院"青竹课堂"讲师</div>
+                    <ul>
+                        <li>主讲<strong>高等数学、线性代数、概率论与数理统计、运筹学</strong>等多门数学课程</li>
+                        <li>帮助众多同学攻克数学难题，<strong>带领班级平均绩点提升 0.1</strong></li>
+                        <li>具备将抽象数学知识讲得通俗易懂的扎实功底</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 教学风采 -->
+            <div class="section">
+                <div class="section-title"><span class="icon">📸</span> 教学风采</div>
+                <div class="gallery">
+                    <div class="gallery-item"><img src="教学照片1.jpg" alt="教学照片1"></div>
+                    <div class="gallery-item"><img src="教学照片2.jpg" alt="教学照片2"></div>
+                    <div class="gallery-item"><img src="教学照片7.jpg" alt="教学照片7"></div>
+                    <div class="gallery-item"><img src="教学照片4.jpg" alt="教学照片4"></div>
+                    <div class="gallery-item"><img src="教学照片6.png" alt="教学照片6"></div>
+                </div>
+            </div>
+
+            <!-- 荣誉与竞赛 -->
+            <div class="section">
+                <div class="section-title"><span class="icon">🏆</span> 荣誉与竞赛</div>
+
+                <p style="font-size:13px;font-weight:700;color:var(--primary-light);margin-bottom:8px;">▎奖学金</p>
+                <div class="tag-list" style="margin-bottom:10px;">
+                    <span class="tag gold">🥇 国家励志奖学金</span>
+                    <span class="tag gold">🥈 人民一等奖学金</span>
+                </div>
+
+                <p style="font-size:13px;font-weight:700;color:var(--primary-light);margin-bottom:8px;">▎校级荣誉</p>
+                <div class="tag-list" style="margin-bottom:10px;">
+                    <span class="tag">⭐ 中国民航大学优秀大学生</span>
+                    <span class="tag">⭐ 中国民航大学优秀共青团员</span>
+                    <span class="tag">🏅 一起云支教标兵个人</span>
+                    <span class="tag">📚 求实班团课优秀学员</span>
+                    <span class="tag">🌟 社会实践优秀团队</span>
+                </div>
+
+                <p style="font-size:13px;font-weight:700;color:var(--primary-light);margin-bottom:8px;">▎学科竞赛</p>
+                <div class="tag-list" style="margin-bottom:10px;">
+                    <span class="tag">🥉 大学生数学竞赛三等奖</span>
+                    <span class="tag">🎖️ 入围天津市数学竞赛</span>
+                    <span class="tag">🧪 化学竞赛三等奖</span>
+                    <span class="tag">📖 人文知识竞赛二等奖</span>
+                </div>
+
+                <p style="font-size:13px;font-weight:700;color:var(--primary-light);margin-bottom:8px;">▎创新创业 & 科研</p>
+                <div class="tag-list">
+                    <span class="tag silver">🥈 国创赛校级银奖</span>
+                    <span class="tag">🥉 国创赛校级铜奖 ×2</span>
+                    <span class="tag">🔬 校级大创项目负责人</span>
+                    <span class="tag">💻 软件著作权 1 项</span>
+                    <span class="tag">📄 学术论文 2 篇</span>
+                </div>
+            </div>
+
+            <!-- 学生工作 -->
+            <div class="section">
+                <div class="section-title"><span class="icon">👔</span> 学生工作经历</div>
+                <div class="tag-list">
+                    <span class="tag">📋 班级团支书</span>
+                    <span class="tag">📊 年级助理</span>
+                    <span class="tag">🎓 校招生办助理团团长</span>
+                    <span class="tag">📨 两年新生招生录取工作</span>
+                    <span class="tag">📖 助教 · 助研 · 助管</span>
+                </div>
+                <p style="margin-top:8px;font-size:13px;color:var(--text-light);">
+                    💡 丰富的学生工作经历培养了出色的<strong>沟通能力、责任心与组织协调能力</strong>，能够与家长、学生保持良好互动。
+                </p>
+            </div>
+
+            <!-- 自我评价 -->
+            <div class="section">
+                <div class="section-title"><span class="icon">💡</span> 教学风格</div>
+                <div class="style-cards">
+                    <div class="style-card">
+                        <div class="style-icon">🔍</div>
+                        <div class="style-title">逻辑清晰</div>
+                        <div class="style-desc">将复杂知识点拆解为简单步骤<br>让学生真正理解而非死记硬背</div>
+                    </div>
+                    <div class="style-card">
+                        <div class="style-icon">📐</div>
+                        <div class="style-title">归纳总结</div>
+                        <div class="style-desc">提炼题型规律与解题模板<br>帮助学生举一反三、触类旁通</div>
+                    </div>
+                    <div class="style-card">
+                        <div class="style-icon">🤝</div>
+                        <div class="style-title">耐心细致</div>
+                        <div class="style-desc">不厌其烦地反复讲解<br>直到学生完全掌握为止</div>
+                    </div>
+                    <div class="style-card">
+                        <div class="style-icon">🎯</div>
+                        <div class="style-title">因材施教</div>
+                        <div class="style-desc">根据薄弱环节与学习特点<br>定制个性化教学方案</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ===== Footer ===== -->
+        <div class="footer">
+            好的教育不仅是提分，更是培养<strong>学习能力与解决问题的自信</strong><br>
+            <span class="phone">📞 13759525063（微信同号）</span>
+        </div>
+
+    </div>
+</body>
+</html>
